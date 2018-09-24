@@ -1,11 +1,11 @@
-package translate;
+package com.nmdp.vita.translate;
 
 
 import java.util.HashMap;
 import java.util.List;
 
 /**
- * Created by Will on 6/5/16.
+ * This class translate the RNA to protein.
  */
 public class Translator {
     private static final String TAG = Translator.class.getSimpleName();

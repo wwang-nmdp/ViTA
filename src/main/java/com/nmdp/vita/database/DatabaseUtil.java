@@ -1,4 +1,4 @@
-package database;
+package com.nmdp.vita.database;
 
 
 import java.sql.*;

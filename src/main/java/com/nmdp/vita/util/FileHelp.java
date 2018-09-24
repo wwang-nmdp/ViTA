@@ -1,10 +1,9 @@
-package util;
+package com.nmdp.vita.util;
+
+import com.nmdp.vita.Configure;
 
 import java.io.File;
 import java.net.URISyntaxException;
-import java.security.CodeSource;
-
-import nmdp.Configure;
 
 /**
  * Created by wwang on 10/19/16.

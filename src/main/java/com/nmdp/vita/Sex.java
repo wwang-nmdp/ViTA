@@ -1,4 +1,4 @@
-package nmdp;
+package com.nmdp.vita;
 
 public enum Sex {
 	MM,
