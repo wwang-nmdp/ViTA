@@ -3,4 +3,4 @@ ViTA is a Java application for predicting the immunogenicity of HLA-epitopes by 
 It supports common input formats, including single-variant chromosome coordinates or variant call format (VCF).
 ## Algorithmic Flow Chart  
 
-![]doc/image/AlgorithmicFlowChart.png
+![AlgorithmicFlowChart]https://github.com/wwang-nmdp/ViTA/blob/master/doc/image/AlgorithmicFlowChart.png
