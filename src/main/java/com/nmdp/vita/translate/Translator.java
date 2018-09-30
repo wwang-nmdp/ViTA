@@ -134,6 +134,20 @@ public class Translator {
         return sb.toString();
     }
 
+    public String translate(String dna, int frame, int lowcase){
+        StringBuilder sb = new StringBuilder();
+        for(int i= frame; i+2 < dna.length(); i = i+3){
+            if(sb.length() == lowcase){
+                sb.append(dna2aa(dna.substring(i, i+3)).toLowerCase());
+            }else {
+                sb.append(dna2aa(dna.substring(i, i+3)));
+            }
+
+        }
+
+        return sb.toString();
+    }
+
     public String dna2aa(String dna){
         if(dna == null || dna.length() != 3){
             System.out.println(TAG + "The DNA length must be 3 for translation! But it is  "+ dna);

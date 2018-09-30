@@ -3,7 +3,8 @@ package com.nmdp.vita.util;
 import com.nmdp.vita.Configure;
 
 import java.io.File;
-import java.net.URISyntaxException;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 
 /**
  * Created by wwang on 10/19/16.
@@ -37,7 +38,7 @@ public class FileHelp {
     }
     
     public static String getYproteinFile(){
-    	return getYproteinPath() + Configure.getPairID()+"yProtein.txt";
+    	return getYproteinPath() + Configure.getWorkID()+"yProtein.txt";
     }
     
     public static void makeFolders(){
@@ -61,135 +62,71 @@ public class FileHelp {
     	folder.mkdirs();
     }
 
-    public static String getFnPath() throws URISyntaxException {
-        return getRoot()+"./DtoR/msv/fn";
+    public static String getInputFile() {
+        if(Configure.input != null){
+            return Configure.input;
+        }else {
+            String input = "input.txt";
+            PrintWriter pw = null;
+            try {
+                pw = new PrintWriter(new File(input));
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            pw.println("#CHROM\tPOS\tID\tREF\tALT\tQUAL\tFILTER\tINFO");
+            pw.println(Configure.chrome + " "+ Configure.location + "\t\tA\tC");
+            pw.close();
+            return input;
+        }
+    }
+    
+
+    
+    public static String getAnnotateOutput(){
+    	return getOutput() + "/annotated/" + "_ann.vcf";
+    }
+    
+    public static String getMissense(){
+    	return getOutput() + "/missense/" + Configure.getWorkID() + "_nn_msv.vcf";
     }
 
-    public static String getFpPath() throws URISyntaxException {
-        return getRoot()+"./DtoR/msv/fp";
-    }
-    
-    public static String getVcfevalPath(){
-    	return getOutput() + "/compared/" +Configure.getPairID()+".out";
-    }
-    
-    public static String getSnpeffInputFn(){
-    	return getVcfevalPath() + "/fn.vcf.gz";
-    }
-    
-    public static String getSnpeffInputFp(){
-    	return getVcfevalPath() + "/fp.vcf.gz";
-    }
-    
-    public static String getAnnotateOutputFn(){
-    	return getOutput() + "/annotated/" + Configure.getPairID() + "_fn_ann.vcf";
-    }
-    
-    public static String getAnnotateOutputFp(){
-    	return getOutput() + "/annotated/" + Configure.getPairID() + "_fp_ann.vcf";
-    }
-    
-    public static String getMissenseFn(){
-    	return getOutput() + "/missense/" + Configure.getPairID() + "_fn_ann_msv.vcf";
-    }
-    public static String getMissenseFp(){
-    	return getOutput() + "/missense/" + Configure.getPairID() + "_fp_ann_msv.vcf";
-    }
-    
-    public static String getMergeOutput(){
-    	return FileHelp.getProteinPath() + Configure.getPairID() + "_protein.fasta";
-    }
-    
-    public static String getRecipientProtein(){
-    	return FileHelp.getProteinPath() + Configure.getPairID() + "_recipient_protien.fasta";
-    }
+
     
     public static String getProteinSlice(){
-    	return FileHelp.getProteinPath() + Configure.getPairID() + "_protein_slice.pep";
+    	return FileHelp.getProteinPath() + Configure.getWorkID() + "_protein_slice.pep";
     }
     public static String getProteinSliceMeta(){
-    	return FileHelp.getProteinPath() + Configure.getPairID() + "_protein_slice_meta.fasta";
+    	return FileHelp.getProteinPath() + Configure.getWorkID() + "_protein_slice_meta.fasta";
     }
-    
-    public static String getDonorProtein(){
-    	return FileHelp.getProteinPath() + Configure.getPairID() + "_donor_protien.fasta";
-    }
+
+
     
     public static String getMetaData(){
-    	return FileHelp.getMetaFilePath() + Configure.getPairID() + "_meta.txt";
+    	return FileHelp.getMetaFilePath() + Configure.getWorkID() + "_meta.txt";
     }
     
     public static String getCleavageFile(){
-    	return getOutput() + "cleavaged/" + Configure.getPairID() + "_cleavaged.txt";
-    }
-    public static String getYCleavageFile(){
-    	return getOutput() + "Ycleavaged/" + Configure.getPairID() + "_cleavaged.txt";
-    }
-    
-    public static String getCleavageYFile(){
-    	return getOutput() + "cleavaged/" + Configure.getPairID() + "_y_cleavaged.txt";
+    	return getOutput() + "cleavaged/" + Configure.getWorkID() + "_cleavaged.txt";
     }
     
     public static String getChopFile(){
-    	return getOutput() + "chopped/" + Configure.getPairID() + "_chopped.pep";
+    	return getOutput() + "chopped/" + Configure.getWorkID() + "_chopped.pep";
     }
     
     public static String getChopMetaData(){
-    	return getOutput() + "chopMeta/" + Configure.getPairID() + ".txt";
+    	return getOutput() + "chopMeta/" + Configure.getWorkID() + ".txt";
     }
     
-    public static String getAffFile_A1(){
-    	return getOutput() + "affinity/" + Configure.getPairID() + "_"+ Configure.removeComma(Configure.hla_a1)+getPos(Configure.hasTwoHla_a()) +".txt";
-    }
-    
-    public static String getAffFile_A2(){
-    	return getOutput() + "affinity/" + Configure.getPairID() + "_"+ Configure.removeComma(Configure.hla_a2)+getPos(Configure.hasTwoHla_a()) +".txt";
-    }
-    
-    public static String getAffFile_B1(){
-    	return getOutput() + "affinity/" + Configure.getPairID() + "_"+ Configure.removeComma(Configure.hla_b1)+getPos(Configure.hasTwoHla_a()) +".txt";
-    }
-    public static String getAffFile_B2(){
-    	return getOutput() + "affinity/" + Configure.getPairID() + "_"+ Configure.removeComma(Configure.hla_b2)+getPos(Configure.hasTwoHla_b()) +".txt";
-    }
-    public static String getAffFile_C1(){
-    	return getOutput() + "affinity/" + Configure.getPairID() + "_"+ Configure.removeComma(Configure.hla_c1)+getPos(Configure.hasTwoHla_b()) +".txt";
-
-    }
-    public static String getAffFile_C2(){
-    	return getOutput() + "affinity/" + Configure.getPairID() + "_"+ Configure.removeComma(Configure.hla_c2)+getPos(Configure.hasTwoHla_c()) +".txt";
-
+    public static String getAffFile(String hla){
+    	return getOutput() + "affinity/" + Configure.getWorkID() + "_"+ hla +".txt";
     }
 
-	public static String getPredictFileA1() {
-		return getOutput() + "predicted/"+ Configure.getPairID() + "_"+ Configure.removeComma(Configure.hla_a1)+getPos(Configure.hasTwoHla_a()) +".txt";
+
+	public static String getPredictFile(String hla) {
+		return getOutput() + "predicted/"+ Configure.getWorkID() + "_"+ hla +".txt";
 	}
-	
-	public static String getPredictFileA2() {
-		return getOutput() + "predicted/"+ Configure.getPairID() + "_"+ Configure.removeComma(Configure.hla_a2)+getPos(Configure.hasTwoHla_a()) +".txt";
-	}
-	
-	public static String getPredictFileB1() {
-		return getOutput() + "predicted/"+ Configure.getPairID() + "_"+ Configure.removeComma(Configure.hla_b1)+getPos(Configure.hasTwoHla_b()) +".txt";
-	}
-	public static String getPredictFileB2() {
-		return getOutput() + "predicted/"+ Configure.getPairID() + "_"+ Configure.removeComma(Configure.hla_b2)+getPos(Configure.hasTwoHla_b()) +".txt";
-	}
-	
-	public static String getPredictFileC1() {
-		return getOutput() + "predicted/"+ Configure.getPairID() + "_"+ Configure.removeComma(Configure.hla_c1)+getPos(Configure.hasTwoHla_c()) +".txt";
-	}
-	
-	public static String getPredictFileC2() {
-		return getOutput() + "predicted/"+ Configure.getPairID() + "_"+ Configure.removeComma(Configure.hla_c2)+getPos(Configure.hasTwoHla_c()) +".txt";
-	}
-	
-	
-	private static String getPos(boolean two){
-		if(two){
-			return "HET";
-		}else{
-			return "HM";
-		}
-	}
+
+	public static String getProteinFile(){
+        return getProteinPath() + Configure.getWorkID() + "_protein.txt";
+    }
 }
