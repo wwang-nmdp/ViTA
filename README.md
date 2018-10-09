@@ -9,7 +9,7 @@ CRISPR/Cas9 and other gene-editing technologies have exciting therapeutic potent
 
 ## Pre-installation
 
-### Install `SnpEff` from http://snpeff.sourceforge.net/index.html  SnpEff is a variant annotation and effect prediction tool. It annotates and predicts the effects of variants on genes (such as amino acid changes).
+### Install `SnpEff`[1] from http://snpeff.sourceforge.net/index.html  SnpEff is a variant annotation and effect prediction tool. It annotates and predicts the effects of variants on genes (such as amino acid changes).
 
 ```unix 
 wget http://sourceforge.net/projects/snpeff/files/snpEff_latest_core.zip
@@ -20,7 +20,7 @@ java -jar snpEff.jar
 
 #Usage: snpEff build [options] genome_version
 java -jar snpEff.jar build GRCh38.82
-### Install `netChop3.1` from Center For Biological Sequence Analysis, Technical University of Denmark.
+### Install `netChop3.1`[2] from Center For Biological Sequence Analysis, Technical University of Denmark.
    The NetChop 3.1 may be downloaded only by special agreement.  For academic users there is a download site at:http://www.cbs.dtu.dk/cgi-bin/nph-sw_request?netchop. Other users are requested to contact   software@cbs.dtu.dk.   
 
 ```unix 
@@ -36,7 +36,7 @@ bin/netchop test/test.fsa > test.out
 ```unix 
 chmod 1777 $TMPDIR
 ```
-### Install `netMHCpan-3.0`
+### Install `netMHCpan-3.0`[3] from Center For Biological Sequence Analysis, Technical University of Denmark.
 Like netChop, the netMHCpan-3.0 may only be downloaded only by special agreement as well. In addition, it requests to download the data file (data.tar.gz) separately.
 
 ```unix 
@@ -76,3 +76,13 @@ Copy the database into your working directory.
 java -jar vita.jar -help
 #check options of the application and test with sample data
 ```
+# References:
+
+
+[1]	Cingolani, P., et al., A program for annotating and predicting the effects of single nucleotide polymorphisms, SnpEff: SNPs in the genome of Drosophila melanogaster strain w1118; iso-2; iso-3. Fly (Austin), 2012. 6(2): p. 80-92.
+
+
+[2]	Kesmir, C., et al., Prediction of proteasome cleavage motifs by neural networks. Protein Eng, 2002. 15(4): p. 287-96.
+
+
+[3]	Nielsen, M. and M. Andreatta, NetMHCpan-3.0; improved prediction of binding to MHC class I molecules integrating information from multiple receptor and peptide length datasets. Genome Med, 2016. 8(1): p. 33.
