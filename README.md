@@ -5,7 +5,7 @@ It supports common input formats, including single-variant chromosome coordinate
 CRISPR/Cas9 and other gene-editing technologies have exciting therapeutic potential. Clinical applications include curing monogenetic disorders or humanizing animal organs for xenotransplantation[1]. Considerable effort and progress has been made to reduce the immunogenicity of microbial-derived core editing components and delivery vectors[2]. However, relatively little attention is given to the possibility that somatic gene edits may lead to immunoreactive antigens introduced ex-post facto (Figure). The effects could be counterproductive if immunocompetent patients reject the therapy or life threatening in cases where human leukocyte antigen (HLA)-bound peptides elicit an alloreactive-like response[3]. Here, we present a strategy paired with an efficient application, variant-to-antigen (ViTA), to simulate gene-edited peptide presentation. ViTA may aid strategies for the development of safe and effective gene therapies.
 ## Algorithmic Flow Chart
 
-![AlgorithmicFlowChart](https://github.com/wwang-nmdp/ViTA/blob/master/doc/image/AlgorithmicFlowChart.png)
+![AlgorithmicFlowChart](https://github.com/wwang-nmdp/ViTA/blob/master/doc/image/vitaflow.png)
 
 ## Pre-installation
 
