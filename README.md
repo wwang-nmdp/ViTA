@@ -1,8 +1,22 @@
 # ViTA
-Targeted genome editing has enormous potential for treating monogenic disorders, especially for those that affect the hematopoietic system. Reducing the immunogenicity of gene-editing components such as CRISPR-Cas9 is critical for ensuring safe treatment. Gene corrections may also result in novel epitopes of human leukocyte antigen (HLA). Here, we present an application, ViTA, that predicts immunogenicity of HLA-epitopes. 
-It supports common input formats, including single-variant chromosome coordinates or variant call format (VCF).
-## Introduction
-CRISPR/Cas9 and other gene-editing technologies have exciting therapeutic potential. Clinical applications include curing monogenetic disorders or humanizing animal organs for xenotransplantation[1]. Considerable effort and progress has been made to reduce the immunogenicity of microbial-derived core editing components and delivery vectors[2]. However, relatively little attention is given to the possibility that somatic gene edits may lead to immunoreactive antigens introduced ex-post facto (Figure). The effects could be counterproductive if immunocompetent patients reject the therapy or life threatening in cases where human leukocyte antigen (HLA)-bound peptides elicit an alloreactive-like response[3]. Here, we present a strategy paired with an efficient application, variant-to-antigen (ViTA), to simulate gene-edited peptide presentation. ViTA may aid strategies for the development of safe and effective gene therapies.
+Targeted genome editing has enormous potentia for treating monogenic disorders, especially for those that affect the hematopoietic system. Reducing the immunogenicity of gene-editing components such as CRISPR-Cas9 is critical for ensuring safe treatment. 
+
+Gene corrections may also result in novel epitopes of human leukocyte antigen (HLA). 
+
+ViTA, **V**ar**i**ants **To** **A**ntigen, is a java application that predicts immunogenicity of HLA-epitopes. 
+ -It supports common input formats
+  -Single-variant chromosome coordinates
+  -Variant call format (VCF).
+  
+## Background
+CRISPR/Cas9 and other gene-editing technologies have exciting therapeutic potential. Clinical applications include curing monogenetic disorders or humanizing animal organs for xenotransplantation[1]. Considerable effort and progress has been made to reduce the immunogenicity of microbial-derived core editing components and delivery vectors[2]. 
+
+However, relatively little attention is given to the possibility that somatic gene edits may lead to immunoreactive antigens introduced ex-post facto (Figure: ViTA Algorithmic Flow Chart). 
+
+The effects could be counterproductive if immunocompetent patients reject the therapy or life threatening in cases where human leukocyte antigen (HLA)-bound peptides elicit an alloreactive-like response[3]. 
+
+Here, we present a strategy paired with an efficient application, variant-to-antigen (ViTA), to simulate gene-edited peptide presentation. 
+
 ## Algorithmic Flow Chart
 
 ![AlgorithmicFlowChart](https://github.com/wwang-nmdp/ViTA/blob/master/doc/image/vitaflow.png)
@@ -73,10 +87,46 @@ Copy the database into your working directory.
 # Run ViTA
 
 ```unix
-java -jar vita.jar -help
+java -jar ViTA-1.0.jar -h
+A typical invovation would be:   java -jar vita.jar -i /path/to/myVariants.vcf -hla A02:01,B07:02,C04:02 -w -t /path/to/workingDirectory/Tools -o /path/to/output
+Commands:
+   -i,     Multiple or single variant input file
+           input file should be a tab-delimited format, regardless of the file extensions.
+
+   -pos,   Position of variants at chromosome coordinate
+           simply input the chromosome coordinate. e.g. -pos chr11:5227002
+           Be cautious, the position format have to be 1-based
+           Please follow the instruction of UCSC genome browser for details of coordinate system: 
+               http://genome.ucsc.edu/blog/the-ucsc-genome-browser-coordinate-counting-systems/
+           It can only take either -i or -pos as input for each process
+
+   -hla,   List of HLA alleles you wish to access immunogenicities
+           HLA allele should be 4-digit resolution with one upper-case allele type followed by 4 numbers.
+               e.g. A01:01
+           Multiple allele input are allowed by comma-delimited format
+               e.g. A0101,A,2001,A0301,B0702
+           Depends on the number of CPUs and disk writing speed, multiple allele input could significantly reduce the predictions
+   -t,     Tell the program where are the dependency tools
+           Set the path to netChop and netMHCpan
+           You might also need to set the PATH for the dependencies:
+               export TMPDIR=/path/to/Tools/netMHCpan-3.0/tmp
+               export TMPDIR=/path/to/Tools/netchop-3.1/tmp
+               export NETCHOP=/path/to/Tools/netchop-3.1/
+               export NETMHCpan=/path/to/Tools/netMHCpan-3.0
+
+   -w,    
+           To activate the slidingWindow function for chopping out all possible variant-containing 8- to 11- mer
+           Otherwise the program goes netChop as default
+   -o,     Set a directory to store the output
+              e.g. /path/to/test/output
+           You don't have to make an exact directory for the program unless you need the output be somewhere specifically
+           Otherwise it will automatically generate one for you
+
+Miscellaneous:
+   -v,     Print current version information and exit
+   -h,     Print this help and exit
+
 #check options of the application and test with sample data
-
-
 ```
 # References:
 [1]   Meier, R.P., et al. Xenotransplantation: back to the future?. Transplant International, 2018.31(5): p.465-477.
