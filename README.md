@@ -21,18 +21,18 @@ Here, we present a strategy paired with an efficient application, variant-to-ant
 
 ## Pre-installation
 
-### Install `SnpEff`[4] from http://snpeff.sourceforge.net/index.html  SnpEff is a variant annotation and effect prediction tool. It annotates and predicts the effects of variants on genes (such as amino acid changes).
+####Install `SnpEff`[4] from http://snpeff.sourceforge.net/index.html  SnpEff is a variant annotation and effect prediction tool. It annotates and predicts the effects of variants on genes (such as amino acid changes).
 
 ```unix
 wget http://sourceforge.net/projects/snpeff/files/snpEff_latest_core.zip
 unzip snpEff_latest_core.zip
 java -jar snpEff.jar
 ```
-#Run 'java -jar snpEff.jar command' for help on each specific command
+Run 'java -jar snpEff.jar command' for help on each specific command
 
-#Usage: snpEff build [options] genome_version
+Usage: snpEff build [options] genome_version
 java -jar snpEff.jar build GRCh38.82
-### Install `netChop3.1`[5] from Center For Biological Sequence Analysis, Technical University of Denmark.
+Install `netChop3.1`[5] from Center For Biological Sequence Analysis, Technical University of Denmark.
    The NetChop 3.1 may be downloaded only by special agreement.  For academic users there is a download site at:http://www.cbs.dtu.dk/cgi-bin/nph-sw_request?netchop. Other users are requested to contact   software@cbs.dtu.dk.
 
 ```unix
@@ -48,7 +48,7 @@ bin/netchop test/test.fsa > test.out
 ```unix
 chmod 1777 $TMPDIR
 ```
-### Install `netMHCpan-3.0`[6] from Center For Biological Sequence Analysis, Technical University of Denmark.
+#### Install `netMHCpan-3.0`[6] from Center For Biological Sequence Analysis, Technical University of Denmark.
 Like netChop, the netMHCpan-3.0 may only be downloaded only by special agreement as well. In addition, it requests to download the data file (data.tar.gz) separately.
 
 ```unix
@@ -62,7 +62,7 @@ tar -xvf data.tar.gz
 
 
 
-## Set environment variables
+##### Set environment variables
 
 ```unix
 export TMPDIR=/Path/to/Tools/netMHCpan-3.0/tmp
@@ -71,7 +71,7 @@ export NETMHCpan=/Path/to/Tools/netMHCpan-3.0
 ```
 
 
-## Build database of Transcriptome
+##### Build database of Transcriptome
 
 
 cds.db is pre-built hg38 transcriptome and minor allele frequence (version:snp147common) database, please download by using the provided link: https://sourceforge.net/projects/mihaip/files/cds.db.zip/download
