@@ -4,9 +4,7 @@ Targeted genome editing has enormous potentia for treating monogenic disorders, 
 Gene corrections may also result in novel epitopes of human leukocyte antigen (HLA). 
 
 ViTA, **V**ar**i**ants **T**o **A**ntigen, is a java application that predicts immunogenicity of HLA-epitopes. 
- ###It supports common input formats
-    ####Single-variant chromosome coordinates
-    ####Variant call format (VCF).
+It supports common input formats: Variant call format (VCF) and Single-variant.
   
 ## Background
 CRISPR/Cas9 and other gene-editing technologies have exciting therapeutic potential. Clinical applications include curing monogenetic disorders or humanizing animal organs for xenotransplantation[1]. Considerable effort and progress has been made to reduce the immunogenicity of microbial-derived core editing components and delivery vectors[2]. 
