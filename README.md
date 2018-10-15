@@ -86,7 +86,7 @@ Copy the database into your working directory.
 
 ```unix
 java -jar ViTA-1.0.jar -h
-A typical invovation would be:   java -jar vita.jar -i /path/to/myVariants.vcf -hla A02:01,B07:02,C04:02 -w -t /path/to/workingDirectory/Tools -o /path/to/output
+A typical command line would be:   java -jar vita.jar -i /path/to/myVariants.vcf -hla A02:01,B07:02,C04:02 -w -t /path/to/workingDirectory/Tools -o /path/to/output
 Commands:
    -i,     Multiple or single variant input file
            input file should be a tab-delimited format, regardless of the file extensions.
@@ -117,8 +117,7 @@ Commands:
            Otherwise the program goes netChop as default
    -o,     Set a directory to store the output
               e.g. /path/to/test/output
-           You don't have to make an exact directory for the program unless you need the output be somewhere specifically
-           Otherwise it will automatically generate one for you
+          
 
 Miscellaneous:
    -v,     Print current version information and exit
